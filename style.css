@@ -1,0 +1,224 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: 0;
+    font-family: 'Poppins', serif;
+
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #282842;
+}
+.digital-clock {
+    position: relative;
+    color: white;
+    background-color: #313149;
+    width: 35em;
+    height: 15em;
+    /* padding: 1.5em 3em; */
+    box-shadow: 0 0.5em 1.5em rgba(0, 0, 0, 0.664);
+    border-radius: 0.8em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.digital-clock::before {
+    content: "";
+    position: absolute;
+    background: linear-gradient(45deg, #00c4f5, #01ff0e #00ff95);
+    background-size: 200% 200%;
+    top: -5px;
+    left: -5px;
+    bottom: -5px;
+    right: -5px;
+    /* z-index: -1;
+    filter: blur(2.5em);
+    animation: glowing 10s ease infinite; */
+}
+
+@keyframes glowing{
+    0%{
+        background-position: 0 50%;
+    }
+    50%{
+        background-position: 100% 50%;
+    }
+    100%{
+        background-position: 0 50%;
+    }
+}
+
+.time {
+    position: relative;
+    display: flex;
+    justify-content: baseline;
+    align-items: center;
+}
+
+.hours, .minuts, .dots {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+    padding: 0 0.3em;
+    line-height: 1em;
+}
+
+.hours, .minuts {
+    font-size: 5em;
+    /* width: 8em; */
+}
+
+.dots {
+    font-size: 5em;
+    color: #aeaeaf;
+}
+
+.hours {
+    background: -webkit-linear-gradient(90deg, #9b00f5, #00e3f3);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+}
+
+.minuts {
+    background: -webkit-linear-gradient(90deg, #c43801, #ffc400);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+}
+
+.right-side {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-left: 0.2em;
+}
+
+.period, .second {
+    font-size: 1em;
+    font-weight: 400;
+}
+
+.period {
+    transform: translateY(-1.5em);
+    /* background: -webkit-linear-gradient(90deg, #fcc100, #f8eaab);
+    -webkit-text-fill-color: transparent ;
+    -webkit-background-clip: text; */
+    font-weight: 500;
+    color: #00e9af;
+}
+
+.second {
+    transform: translateY(1.5em);
+    /* background: -webkit-linear-gradient(90deg, #00ffea, #00ff73);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text; */
+    font-weight: 500;
+    color: #ffc400;
+}
+
+.calendar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font: 1em;
+    font-weight: 600;
+    /* margin-bottom: 0.2em; */
+    background: -webkit-linear-gradient(90deg, #e3f300, #ffffff);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    margin-top: 2em;
+}
+
+.day-name, .day-number, .year {
+    margin-left: 0.5em;
+}
+
+.menu-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 1em;
+    color: white;
+    font-size: 1.5em;
+    cursor: pointer;
+}
+
+.menu-list {
+    z-index: 1000;
+    position: absolute;
+    top: 0.5em;
+    right: 1.5em;
+    list-style: none;
+    background: #4e4e4e;
+    padding: 0.5em 2em ;
+    border-radius: 0.5em;
+    box-shadow: 0 0.5em 1.5em rgba(0, 0, 0, 0.5);
+    margin: 1em;
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.3s ease;
+}
+
+.menu-list.active{
+    visibility: visible;
+    opacity: 1;
+}
+
+.menu-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.clock-format {
+    color: rgb(255, 255, 255);
+    font-size: 0.9em;
+    margin-right: 1em;
+}
+
+.clock-format-switch-btn {
+    width: 2em;
+    height: 1em;
+    background: #313149;
+    border-radius: 4em;
+    box-shadow: inset 2px 2px 4px rgba(255, 255, 255, 0.1),
+                inset 2px 2px 4px rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.clock-format-switch-btn::before {
+    content: "";
+    position: absolute;
+    width: 1em;
+    height: 1em;
+    background-color: #f88d00;
+    border-radius: 50%;
+    box-shadow: 0 3px 20px #f88d00;
+    transform: translate(-0.5em);
+    transition: 0.3s ease;
+    transition-property: background, transform ;
+}
+
+.clock-format-switch-btn.active::before{
+    background: #00f7ff;
+    box-shadow: 0 3px 20px #00f7ff;
+    transform: translate(0.5em);
+}
+ 
+.sujit {
+    color: #777777;
+    font-size: 0.8em;
+}
